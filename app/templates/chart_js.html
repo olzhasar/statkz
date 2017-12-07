@@ -1,3 +1,46 @@
+Chart.defaults.global.responsive = true;
 {% for chart in charts %}
-
+// define the chart data
+var chartData = {
+  labels : [{% for item in chart.labels %}
+             "{{item}}",
+            {% endfor %}],
+  datasets : [
+  {% for series in chart.series %}
+  {
+      label: '{{ series.legend }}',
+      fill: {% if series.fill %}true{% else %}false{% endif %},
+      lineTension: 0.1,
+      backgroundColor: "{{ series.backgroundColor }}",
+      borderColor: "{{ series.borderColor }}",
+      borderCapStyle: 'butt',
+      borderDash: [],
+      borderDashOffset: 0.0,
+      borderJoinStyle: 'miter',
+      pointBorderColor: "{{ series.borderColor }}",
+      pointBackgroundColor: "#fff",
+      pointBorderWidth: 1,
+      pointHoverRadius: 5,
+      pointHoverBackgroundColor: "{{ series.borderColor }}",
+      pointHoverBorderColor: "rgba(220,220,220,1)",
+      pointHoverBorderWidth: 2,
+      pointRadius: 1,
+      pointHitRadius: 10,
+      data : [{% for item in series.values %}
+                {{item}},
+              {% endfor %}],
+      spanGaps: false
+  },
+  {% endfor %}
+  ]
+}
+ 
+// get chart canvas
+var ctx = document.getElementById("{{ loop.index }}").getContext("2d");
+ 
+// create the chart using the chart canvas
+var myChart = new Chart(ctx, {
+  type: '{{ chart.kind }}',
+  data: chartData,
+});
 {% endfor %}
