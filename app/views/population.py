@@ -3,8 +3,8 @@ from app import app
 from app.chart import Chart, Series
 
 
-@app.route('/')
-def index():
+@app.route('/population')
+def population():
     charts = [
         Chart(title='Среднедушевые номинальные доходы населения',
               series=[
@@ -47,4 +47,4 @@ def index():
               ],
               kind='line'),
     ]
-    return render_template('index.html', charts=charts)
+    return render_template('chart.html', charts=charts)
