@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Сайт, на котором Вы можете просматривать статистические данные Республики Казахстан в удобной графической форме">
+  <meta name="author" content="Just For Fun">
+  <meta name="keyword" content="Статистика, статистические данные, стат, визуальные, график, динамика, Казахстан, РК">
+  <link rel="shortcut icon" href="img/favicon.png">
+  <title>Визуальная статистика Казахстана</title>
+
+  <!-- Icons -->
+  <link href="{{ url_for('static', filename='css/font-awesome.min.css') }}" rel="stylesheet">
+
+  <!-- Main styles for this application -->
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
+</head>
+
+<body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
+  <header class="app-header navbar">
+    <button class="navbar-toggler mobile-sidebar-toggler d-lg-none mr-auto" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/"></a>
+    <ul class="navbar-nav ml-auto">
+      <li>
+        <a class="btn btn-facebook btn-sm"><span> Поделиться на Facebook</span></a>
+        &nbsp;
+      </li>
+    </ul>
+
+  </header>
+
+  <div class="app-body">
+    <div class="sidebar">
+      <nav class="sidebar-nav">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="/"><i class="fa fa-home"></i> Главная </a>
+            <a class="nav-link" href="/population"><i class="fa fa-users"></i> Население </a>
+            <a class="nav-link" href="/standard_of_living"><i class="fa fa-money"></i> Уровень жизни </a>
+            <a class="nav-link" href="/economy"><i class="fa fa-line-chart"></i> Экономика </a>
+            <a class="nav-link" href="/finance"><i class="fa fa-university"></i> Финансы </a>
+            <a class="nav-link" href="/education"><i class="fa fa-graduation-cap"></i> Образование </a>
+            <a class="nav-link" href="/healthcare"><i class="fa fa-medkit"></i> Здравоохранение </a>
+          </li>
+
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Main content -->
+    <main class="main">
+
+      <div class="container-fluid">
+        <div class="animated fadeIn">
+          <br>
+          {% block content %}
+          <div class="card text-white bg-success">
+            <div class="card-body">
+              <h2>Добро пожаловать на сайт визуальной статистики Казахстана!</h2>
+              <p>Сайт был разработан для предоставления возможности любому заинтересованному лицу проанализировать основные статистические показатели Республики Казахстан в удобной графической форме.</p>
+              <p>Для начала работы с сайтом, выберите интересующий вас раздел данных из списка слева</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              Избранная статистика 
+            </div>
+            <div class="card-body">
+              <div class="row">
+                {% for chart in charts %}
+                  <div class="col-md-6">
+                    <h6 class="text-center">{{ chart.title }}</h6>
+                    <div class="chart-wrapper">
+                      <canvas id="{{ loop.index }}"></canvas>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>      
+          {% endblock %}
+        </div>
+      </div>
+      <!-- /.conainer-fluid -->
+    </main>
+
+  </div>
+
+  <footer class="app-footer">
+    <span>Источник данных: Комитет по статистике Министерства национальной экономики РК</span>
+    <span class="ml-auto">© 2017, Just For Fun Production</span>
+  </footer>
+  <!-- Bootstrap and necessary plugins -->
+  <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/tether.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/pace.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  <script type="text/javascript">
+  {% block script %}
+  {% include 'chart_js.html' %}
+  {% endblock %}
+  </script>
+
+</body>
+</html>
