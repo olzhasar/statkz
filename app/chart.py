@@ -4,7 +4,7 @@ hdf_key = 'social_demographic'
 
 
 class Series():
-    def __init__(self):
+    def __init__(self, ):
         pass
 
 
