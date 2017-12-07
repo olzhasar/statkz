@@ -6,44 +6,84 @@ from app.chart import Chart, Series
 @app.route('/population')
 def population():
     charts = [
-        Chart(title='Среднедушевые номинальные доходы населения',
+        Chart(title='Население',
               series=[
                   Series(
-                      key='average_nominal_income_per_person_usd',
-                      legend='Долларов США',
-                      color=2,
-                      fill=True,
-                  )
-              ],
-              kind='bar'),
-        Chart(title='Средний размер ежемесячной пенсии',
-              series=[
-                  Series(
-                      key='average_monthly_pension_usd',
-                      legend='Долларов США',
-                      color=2,
-                      fill=True,
-                  )
-              ],
-              kind='bar'),
-        Chart(title='Количество больниц в РК',
-              series=[
-                  Series(
-                      key='hospitals_total',
-                      legend='ед.',
+                      key='population',
+                      legend='Численность населения РК, тыс. чел.',
                       color=0,
                       fill=True,
                   )
               ],
               kind='line'),
-        Chart(title='Количество школ в РК',
+        Chart(title='Сальдо миграции',
               series=[
                   Series(
-                      key='schools_total',
-                      legend='ед.',
-                      color=0,
+                      key='migration_balance',
+                      legend='Сальдо миграции, чел.',
+                      color=5,
                       fill=True,
                   )
+              ],
+              kind='bar'),
+        Chart(title='Рождаемость, смертность и естественный прирост',
+              series=[
+                  Series(
+                      key='birth_rate_1000',
+                      legend='Коэффициент рождаемости на 1000 чел.',
+                      color=2,
+                      fill=False,
+                  ),
+                  Series(
+                      key='death_rate_1000',
+                      legend='Коэффициент смертности на 1000 чел.',
+                      color=1,
+                      fill=False,
+                  ),
+                  Series(
+                      key='natural_population_increase_1000',
+                      legend='Естественный прирост населения на 1000 чел.',
+                      color=0,
+                      fill=False,
+                  ),
+              ],
+              kind='line'),
+        Chart(title='Ожидаемая продолжительность жизни населения',
+              series=[
+                  Series(
+                      key='expected_life_length_all',
+                      legend='Ожидаемая продложительность жизни, общая',
+                      color=0,
+                      fill=False,
+                  ),
+                  Series(
+                      key='expected_life_length_men',
+                      legend='Ожидаемая продложительность жизни, мужчины',
+                      color=2,
+                      fill=False,
+                  ),
+                  Series(
+                      key='expected_life_length_women',
+                      legend='Ожидаемая продложительность жизни, женщины',
+                      color=1,
+                      fill=False,
+                  ),
+              ],
+              kind='line'),
+        Chart(title='Браки и разводы',
+              series=[
+                  Series(
+                      key='marriage_rate',
+                      legend='Коэффициент брачности на 1000 чел.',
+                      color=0,
+                      fill=False,
+                  ),
+                  Series(
+                      key='divorce_rate',
+                      legend='Коэффициент разводов на 1000 чел.',
+                      color=1,
+                      fill=False,
+                  ),
               ],
               kind='line'),
     ]

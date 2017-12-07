@@ -43,7 +43,7 @@ class Chart():
         self.kind = kind
         self.tooltip = tooltip
         columns = [s.key for s in series]
-        data = pd.read_hdf(hdf_file, hdf_key)[columns].dropna()
+        data = pd.read_hdf(hdf_file, hdf_key)[columns].dropna().round(2)
         self.labels = data.index.tolist()
         for s in series:
             s.values = data[s.key].tolist()
