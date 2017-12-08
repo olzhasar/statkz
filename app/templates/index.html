@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xlmns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#" lang="ru">
+<html prefix="og: http://ogp.me/ns#" xlmns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#" lang="ru">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +7,13 @@
   <meta name="description" content="Сайт, на котором Вы можете просматривать статистические данные Республики Казахстан в удобной графической форме">
   <meta name="author" content="Just For Fun">
   <meta name="keyword" content="Статистика, статистические данные, стат, визуальные, график, динамика, Казахстан, РК">
-  <meta property="og:image" content="{{ url_for('static', filename='img/preview.png') }}">
+  <meta property="og:title" content="Визуальная статистика Казахстана" />
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="Сайт, на котором Вы можете просматривать статистические данные Республики Казахстан в удобной графической форме" />
+  <meta property="og:url" content="http://statkz.wtf/" />
+  <meta property="og:image" content="{{ url_for('static', filename='img/preview.png') }}" />
+  <meta property="og:image:width" content="963" />
+  <meta property="og:image:height" content="481"/>
   <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}">
   <title>Визуальная статистика Казахстана</title>
 
