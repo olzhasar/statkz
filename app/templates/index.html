@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xlmns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#" lang="ru">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +7,8 @@
   <meta name="description" content="Сайт, на котором Вы можете просматривать статистические данные Республики Казахстан в удобной графической форме">
   <meta name="author" content="Just For Fun">
   <meta name="keyword" content="Статистика, статистические данные, стат, визуальные, график, динамика, Казахстан, РК">
-  <link rel="shortcut icon" href="img/favicon.png">
+  <meta property="og:image" content="{{ url_for('static', filename='img/preview.png') }}">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}">
   <title>Визуальная статистика Казахстана</title>
 
   <!-- Icons -->
@@ -27,7 +28,7 @@
     <a class="navbar-brand" href="/"></a>
     <ul class="navbar-nav ml-auto">
       <li>
-        <a class="btn btn-facebook btn-sm"><span> Поделиться на Facebook</span></a>
+        <a class="btn btn-facebook btn-sm" href="https://www.facebook.com/sharer/sharer.php?u=http%3A//statkz.wtf/"><span> Поделиться на Facebook</span></a>
         &nbsp;
       </li>
     </ul>
