@@ -74,7 +74,7 @@ def education():
                   ),
               ],
               kind='line'),
-        Chart(title='Численность учащихся в школах',
+        Chart(title='Численность детей в дошкольных организациях',
               series=[
                   Series(
                       key='preschool_population_total',
